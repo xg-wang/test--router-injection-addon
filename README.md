@@ -1,38 +1,9 @@
-router-injection-addon
-==============================================================================
+# router-injection-addon
 
-[Short description of the addon.]
+To facilitate discussions in https://github.com/emberjs/rfcs/pull/680
 
+See ![test-console-output](./test-console-output.png)
 
-Compatibility
-------------------------------------------------------------------------------
+The service being looked up in the *instance-initializer* cannot be re-registered in test, the only way to override the base class behavior is to mutate the concrete service instance.
 
-* Ember.js v3.12 or above
-* Ember CLI v2.13 or above
-* Node.js v10 or above
-
-
-Installation
-------------------------------------------------------------------------------
-
-```
-ember install router-injection-addon
-```
-
-
-Usage
-------------------------------------------------------------------------------
-
-[Longer description of how to use the addon in apps.]
-
-
-Contributing
-------------------------------------------------------------------------------
-
-See the [Contributing](CONTRIBUTING.md) guide for details.
-
-
-License
-------------------------------------------------------------------------------
-
-This project is licensed under the [MIT License](LICENSE.md).
+The reason is instance initializers run before test hooks beforeEach.
